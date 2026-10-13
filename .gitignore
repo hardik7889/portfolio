@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+vendor/
+
+# build output
+dist/
+build/
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# logs
+*.log
+npm-debug.log*
+
+# temp
+*.tmp
+*.bak

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Sharma — Holo Prism</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800&family=Fira+Code:wght@300;500&display=swap" rel="stylesheet">
+<style>
+:root{--c1:#22d3ee;--c2:#e879f9;--c3:#fde047;--bg:#03060f;--txt:#eaf6ff;--dim:#7c93b8}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Outfit',sans-serif;overflow-x:hidden;padding-bottom:44px}
+body:before{content:'';position:fixed;inset:-20%;z-index:0;
+  background:radial-gradient(circle at 25% 30%,rgba(34,211,238,.14),transparent 38%),
+    radial-gradient(circle at 78% 65%,rgba(232,121,249,.12),transparent 40%),
+    radial-gradient(circle at 50% 90%,rgba(253,224,71,.07),transparent 45%);
+  animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(3%,-3%,0) scale(1.08)}}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 48%,rgba(3,6,15,.86) 100%)}
+.lines{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.4;
+  background:repeating-linear-gradient(0deg,rgba(34,211,238,.035) 0 1px,transparent 1px 4px)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
+  padding:18px 40px;gap:12px;overflow:hidden;
+  background:linear-gradient(180deg,rgba(3,6,15,.92),rgba(3,6,15,.25));border-bottom:1px solid rgba(34,211,238,.15);backdrop-filter:blur(12px)}
+.logo{font-family:'Outfit';font-weight:800;font-size:18px;letter-spacing:1px;color:var(--c1);flex:0 0 auto;white-space:nowrap}
+.logo i{color:var(--c2);font-style:normal}
+.nl{display:flex;gap:14px;list-style:none;flex:1 1 auto;justify-content:flex-end;flex-wrap:wrap;min-width:0}
+.nl a{color:#9fb6d4;text-decoration:none;font-family:'Fira Code';font-size:11.5px;letter-spacing:1.2px;
+  text-transform:uppercase;transition:.25s;white-space:nowrap;text-shadow:0 1px 8px rgba(3,8,18,.9)}
+.nl a:hover{color:#7df9ff}
+main{position:relative;z-index:10}
+section{min-height:100vh;padding:120px 8vw 80px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.tt{font-family:'Outfit';font-weight:800;font-size:clamp(26px,4.2vw,48px);margin-bottom:6px;position:relative;
+  background:linear-gradient(95deg,var(--c1),var(--c2),var(--c3),var(--c1));background-size:300% 300%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tt .uline{position:absolute;left:0;bottom:-8px;height:2px;width:0;background:currentColor;opacity:.6;transition:width 1s cubic-bezier(.2,.8,.3,1)}
+.tt.in .uline{width:100%}
+.tl{width:100px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--c1),var(--c2));margin-bottom:46px}
+
+#hero{padding-top:104px;padding-bottom:78px}
+#hero .badge{display:inline-block;padding:8px 20px;border:1px solid rgba(34,211,238,.35);border-radius:100px;
+  font-family:'Fira Code';font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--c1);
+  background:rgba(3,6,15,.75);backdrop-filter:blur(8px);margin-bottom:20px;position:relative;z-index:6}
+.hero-split{display:flex;align-items:center;justify-content:center;gap:clamp(28px,5vw,72px);
+  flex-wrap:wrap;width:100%;max-width:1180px;margin:0 auto}
+.hero-copy{flex:1 1 460px;min-width:300px;text-align:center}
+.hero-portrait{flex:0 0 auto;display:flex;justify-content:center;align-items:center}
+.big{font-family:'Outfit';font-weight:800;font-size:min(7.6vw,80px);line-height:1.02;letter-spacing:-.04em;
+  background:linear-gradient(178deg,#ffffff 0%,#a8f4ff 34%,#22d3ee 62%,#c084fc 100%);
+  background-size:300% 300%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  white-space:nowrap;filter:drop-shadow(0 0 26px rgba(3,6,15,.95)) drop-shadow(0 0 60px rgba(34,211,238,.35))}
+.role{font-family:'Fira Code';font-size:clamp(13px,1.8vw,19px);letter-spacing:4px;text-transform:uppercase;
+  color:var(--c3);margin-top:20px;min-height:30px;min-width:1px}
+.role::after{content:'▌';margin-left:2px;opacity:.9;animation:caretBlink .75s steps(1) infinite}
+@keyframes caretBlink{0%,49%{opacity:.9}50%,100%{opacity:0}}
+.desc{max-width:630px;margin:16px auto 0;color:#c6dcf2;font-size:16px;line-height:1.8;font-weight:400;
+  text-shadow:0 1px 10px rgba(3,8,18,.92)}
+.btns{display:flex;gap:15px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.btn{padding:13px 32px;border-radius:100px;font-family:'Fira Code';font-size:12px;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:.3s;
+  border:1px solid rgba(34,211,238,.4);color:var(--c1);background:rgba(34,211,238,.05)}
+.btn:hover{background:rgba(34,211,238,.16);transform:translateY(-3px);box-shadow:0 10px 30px rgba(34,211,238,.25)}
+.btn.s{background:linear-gradient(100deg,var(--c1),var(--c2));border:none;color:#03060f;font-weight:700}
+.btn.s:hover{box-shadow:0 10px 34px rgba(232,121,249,.4)}
+
+/* ===== ROUND HOLO PORTRAIT ===== */
+.orb{position:relative;width:clamp(220px,26vw,330px);aspect-ratio:1/1;display:grid;place-items:center;
+  perspective:900px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.8,.3,1);will-change:transform}
+.orb .disc{position:absolute;inset:6%;border-radius:50%;
+  background:radial-gradient(circle at 50% 35%,rgba(0,240,255,.30),rgba(123,47,255,.18) 55%,transparent 72%);
+  border:1.5px solid rgba(0,240,255,.42);
+  box-shadow:0 0 42px rgba(0,240,255,.34),0 0 90px rgba(123,47,255,.2) inset;
+  animation:orbPulse 4.6s ease-in-out infinite}
+@keyframes orbPulse{0%,100%{box-shadow:0 0 34px rgba(0,240,255,.3),0 0 70px rgba(123,47,255,.16) inset}
+  50%{box-shadow:0 0 58px rgba(0,240,255,.5),0 0 110px rgba(123,47,255,.3) inset}}
+.orb .person{position:relative;z-index:3;width:82%;height:auto;max-height:96%;object-fit:contain;
+  filter:grayscale(100%) contrast(1.06) brightness(.92) drop-shadow(0 0 18px rgba(0,240,255,.35));
+  transition:filter .55s ease,transform .55s cubic-bezier(.2,.8,.3,1)}
+.orb:hover .person{filter:grayscale(0%) contrast(1.05) brightness(1.02) drop-shadow(0 0 26px rgba(0,240,255,.6)) drop-shadow(0 0 60px rgba(123,47,255,.4));
+  transform:translateY(-8px) scale(1.035)}
+.orb .orbit{position:absolute;inset:0;border-radius:50%;pointer-events:none;border:1px dashed rgba(0,240,255,.34);animation:orbSpin 16s linear infinite}
+.orb .orbit2{position:absolute;inset:-16px;border-radius:50%;pointer-events:none;border:1px solid rgba(255,0,229,.22);animation:orbSpin 24s linear infinite reverse}
+@keyframes orbSpin{to{transform:rotate(360deg)}}
+.orb .node{position:absolute;top:50%;left:-4px;width:9px;height:9px;border-radius:50%;background:#5eead4;
+  box-shadow:0 0 14px #5eead4;transform:translateY(-50%);animation:nodeGlow 2s ease-in-out infinite}
+@keyframes nodeGlow{0%,100%{box-shadow:0 0 10px #5eead4}50%{box-shadow:0 0 22px #5eead4,0 0 40px #5eead4}}
+@media(max-width:860px){.hero-split{flex-direction:column-reverse;gap:24px}.orb{width:min(64vw,250px)}
+  .big{font-size:min(9vw,54px)}}
+
+.panel{background:linear-gradient(150deg,rgba(10,20,38,.72),rgba(10,20,38,.4));border:1px solid rgba(34,211,238,.16);
+  border-radius:18px;padding:32px;backdrop-filter:blur(14px);transition:.35s}
+.panel:hover{border-color:rgba(34,211,238,.42);box-shadow:0 0 40px rgba(34,211,238,.13);transform:translateY(-4px)}
+.panel h3{font-family:'Fira Code';font-size:13px;letter-spacing:2.2px;text-transform:uppercase;color:var(--c1);margin-bottom:14px}
+.panel p{color:#a9c2dc;line-height:1.85;font-size:15.5px;font-weight:300}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:32px}
+.st{border-radius:16px;padding:26px 12px;text-align:center;background:rgba(34,211,238,.05);border:1px solid rgba(34,211,238,.16);transition:.35s}
+.st:hover{transform:translateY(-6px);background:rgba(34,211,238,.11);box-shadow:0 14px 40px rgba(34,211,238,.18)}
+.st b{font-family:'Outfit';font-weight:800;font-size:34px;display:block;color:var(--c1)}
+.st span{font-family:'Fira Code';font-size:10.5px;letter-spacing:1.8px;color:var(--dim);text-transform:uppercase}
+.chips{display:flex;flex-wrap:wrap;gap:11px}
+.chip{padding:11px 22px;border-radius:100px;font-family:'Fira Code';font-size:13px;color:var(--txt);
+  background:rgba(10,20,38,.6);border:1px solid rgba(34,211,238,.18);transition:.3s;cursor:pointer}
+.chip:hover{transform:translateY(-4px);border-color:var(--c2);background:rgba(232,121,249,.12);box-shadow:0 10px 28px rgba(232,121,249,.22)}
+.tline{position:relative;padding-left:40px}
+.tline:before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--c1),var(--c2),transparent)}
+.ti{position:relative;margin-bottom:38px}
+.ti:before{content:'';position:absolute;left:-38px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--c1);box-shadow:0 0 12px var(--c1)}
+.ti h4{font-size:17px;font-weight:700;color:#fff;margin-bottom:5px}
+.ti .m{font-family:'Fira Code';font-size:11.5px;letter-spacing:1.5px;color:var(--c3);text-transform:uppercase;margin-bottom:9px}
+.ti p{color:#a9c2dc;line-height:1.75;font-size:15px;font-weight:300}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.pj{padding:28px;border-radius:18px;background:linear-gradient(155deg,rgba(10,20,38,.78),rgba(10,20,38,.45));
+  border:1px solid rgba(34,211,238,.16);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.pj:before{content:'';position:absolute;top:0;left:-60%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(34,211,238,.1),transparent);transition:.7s}
+.pj:hover:before{left:130%}
+.pj:hover{border-color:rgba(232,121,249,.45);box-shadow:0 20px 55px rgba(232,121,249,.16)}
+.pj .n{font-family:'Fira Code';font-size:10.5px;letter-spacing:2.2px;color:var(--c3);display:block;margin-bottom:12px}
+.pj h4{font-size:18px;font-weight:700;color:#fff;margin-bottom:11px}
+.pj p{color:#a9c2dc;line-height:1.75;font-size:14.5px;font-weight:300}
+.pj .tc{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}
+.pj .tc span{font-family:'Fira Code';font-size:10px;letter-spacing:1.2px;padding:4px 11px;border-radius:100px;border:1px solid rgba(34,211,238,.25);color:var(--c1);text-transform:uppercase}
+.cw{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.cw{grid-template-columns:1fr}}
+.ci{display:flex;align-items:center;gap:15px;padding:20px 22px;border-radius:16px;background:rgba(10,20,38,.55);
+  border:1px solid rgba(34,211,238,.14);text-decoration:none;color:var(--txt);transition:.3s}
+.ci:hover{border-color:var(--c1);background:rgba(34,211,238,.09);transform:translateX(8px);box-shadow:-8px 0 30px rgba(34,211,238,.18)}
+.ci .i{width:44px;height:44px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:18px;background:linear-gradient(135deg,rgba(34,211,238,.18),rgba(232,121,249,.18));border:1px solid rgba(34,211,238,.22)}
+.ci b{display:block;font-family:'Fira Code';font-size:10px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:3px}
+.ci span{font-size:14.5px;font-weight:500;word-break:break-all}
+footer{text-align:center;padding:50px 20px 74px;color:var(--dim);font-family:'Fira Code';font-size:11.5px;
+  letter-spacing:1.8px;text-transform:uppercase;border-top:1px solid rgba(34,211,238,.1);position:relative;z-index:10}
+footer b{color:var(--c1)}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+
+@keyframes gradSlide{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.gradrotate{background-size:300% 300% !important;animation:gradSlide 9s ease infinite !important}
+.glitchTxt{position:relative;display:inline-block}
+.glitchTxt::before,.glitchTxt::after{content:attr(data-t);position:absolute;top:0;left:0;width:100%;height:100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;pointer-events:none}
+.glitchTxt::before{animation:glA 3.2s infinite steps(2)}
+.glitchTxt::after{animation:glB 2.4s infinite steps(2)}
+@keyframes glA{0%,93%,100%{transform:translate(0);opacity:0}94%{transform:translate(-3px,2px);opacity:.85}97%{transform:translate(2px,-2px);opacity:.85}}
+@keyframes glB{0%,91%,100%{transform:translate(0);opacity:0}92%{transform:translate(3px,-2px);opacity:.85}96%{transform:translate(-2px,2px);opacity:.85}}
+.letters span{display:inline-block;opacity:0;transform:translateY(40px) rotateX(-90deg);
+  transition:opacity .5s cubic-bezier(.2,.8,.3,1),transform .5s cubic-bezier(.2,.8,.3,1)}
+.letters.in span{opacity:1;transform:none}
+.flip span{transition:transform .35s cubic-bezier(.2,.8,.3,1),color .35s}
+.flip:hover span{transform:translateY(-6px) rotateX(360deg);color:#fff}
+.fadeup{opacity:0;transform:translateY(34px) scale(.97);transition:opacity .8s cubic-bezier(.2,.8,.3,1),transform .8s cubic-bezier(.2,.8,.3,1)}
+.fadeup.in{opacity:1;transform:none}
+@keyframes neonBreathe{0%,100%{text-shadow:0 0 6px currentColor,0 0 14px currentColor}
+  50%{text-shadow:0 0 10px currentColor,0 0 26px currentColor,0 0 52px currentColor}}
+.neon{animation:neonBreathe 2.6s ease-in-out infinite}
+.neon.gold{color:#ffe9a8 !important;-webkit-text-fill-color:#ffe9a8 !important;text-shadow:0 0 8px #fbbf24,0 0 24px #fbbf24}
+
+.ticker{position:fixed;bottom:0;left:0;right:0;z-index:120;padding:9px 0;overflow:hidden;white-space:nowrap;
+  background:linear-gradient(90deg,rgba(0,240,255,.09),rgba(255,0,229,.09));border-top:1px solid rgba(0,240,255,.22);
+  backdrop-filter:blur(10px);font-family:monospace;font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,240,255,.9)}
+.ticker i{display:inline-block;padding-left:100%;animation:tick 26s linear infinite;font-style:normal}
+.ticker i span{margin:0 26px}
+.ticker i span b{color:#5eead4}
+@keyframes tick{to{transform:translateX(-100%)}}
+@media(max-width:640px){.ticker{display:none}}
+@media(max-width:900px){.nl a{font-size:10.5px;letter-spacing:.8px}.nl{gap:10px}}
+@media(max-width:680px){.nl{display:none}}
+
+/* badge must hug its content, not stretch */
+#hero .badge,.hero-inner>.badge{display:inline-block !important;width:auto !important;max-width:max-content !important;align-self:center !important}
+#hero{align-items:center !important}
+#hero .hero-split{justify-content:center !important}
+
+/* ===== PHOTO ON THE LEFT (copy on the right) ===== */
+.hero-split{flex-direction:row-reverse !important}
+.hero-copy{text-align:center !important}
+@media(max-width:860px){
+  .hero-split{flex-direction:column-reverse !important}
+}
+
+/* ===== BIGGER NAV LINKS ===== */
+.nl a,.navlinks a{
+  font-size:14.5px !important;
+  letter-spacing:1.6px !important;
+  font-weight:500 !important;
+  padding:2px 2px !important;
+}
+.nl,.navlinks{gap:20px !important}
+.logo{font-size:20px !important}
+nav{padding:20px 42px !important}
+@media(max-width:1100px){
+  .nl a,.navlinks a{font-size:13px !important;letter-spacing:1.1px !important}
+  .nl,.navlinks{gap:15px !important}
+}
+@media(max-width:860px){
+  .nl a,.navlinks a{font-size:12px !important;letter-spacing:.8px !important}
+  .nl,.navlinks{gap:12px !important}
+}
+
+/* ===== MULTI-COLOUR TEXT EFFECT (all text) ===== */
+@keyframes rainbowFlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+/* headings: full rainbow gradient that flows */
+h1,h2,h3,h4,.tt,.big,.hero-name,.panel h3,.ti h4,.pj h4,.logo{
+  background-image:linear-gradient(92deg,
+    #22d3ee 0%, #38bdf8 14%, #a78bfa 28%, #e879f9 42%,
+    #f472b6 56%, #fbbf24 70%, #34d399 84%, #22d3ee 100%) !important;
+  background-size:300% 100% !important;
+  -webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  animation:rainbowFlow 11s linear infinite !important;
+}
+/* body copy + list items: subtle 2-colour gradient so it stays readable */
+.desc,p,.ti p,.pj p,.panel p,.st span,.ci span,.ci b,.tl-item p{
+  background-image:linear-gradient(92deg,#c9e6ff 0%,#a5b4fc 45%,#7dd3fc 100%) !important;
+  background-size:200% 100% !important;
+  -webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  animation:rainbowFlow 14s linear infinite !important;
+}
+/* nav + chips + buttons: bright tri-colour */
+.nl a,.navlinks a,.chip,.btn,.pj .tc span,.pj .n{
+  background-image:linear-gradient(92deg,#7df9ff 0%,#a78bfa 50%,#f472b6 100%) !important;
+  background-size:220% 100% !important;
+  -webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  animation:rainbowFlow 9s linear infinite !important;
+}
+/* keep stat numbers + role line vivid */
+.st b{background-image:linear-gradient(180deg,#22d3ee,#a78bfa,#e879f9) !important;background-size:100% 200% !important;
+  -webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent !important;
+  animation:rainbowFlow 8s linear infinite !important}
+/* neon role keeps its own glow but gets colour too */
+.role,.hero-role{background-image:linear-gradient(92deg,#fde047,#f472b6,#7df9ff,#fde047) !important;
+  background-size:300% 100% !important;-webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;animation:rainbowFlow 7s linear infinite !important}
+/* the typewriter caret must stay visible */
+.role::after,.hero-role::after{-webkit-text-fill-color:#fde047 !important;color:#fde047 !important;background:none !important}
+/* glitch layers keep the same gradient */
+.glitchTxt::before,.glitchTxt::after{
+  background-image:inherit !important;background-size:300% 100% !important;
+  -webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent !important;
+}
+/* footer */
+footer,footer b{background-image:linear-gradient(92deg,#7dd3fc,#a78bfa,#f472b6) !important;
+  background-size:200% 100% !important;-webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;animation:rainbowFlow 13s linear infinite !important}
+
+/* ===== READABLE HOVER v3: VIVID multi-colour + crisp ===== */
+@keyframes haloPulse{
+  0%,100%{filter:drop-shadow(0 0 3px rgba(0,229,255,.85)) drop-shadow(0 0 9px rgba(180,77,255,.6)) drop-shadow(0 0 18px rgba(255,179,0,.45))}
+  50%{filter:drop-shadow(0 0 6px rgba(0,229,255,1)) drop-shadow(0 0 16px rgba(180,77,255,.9)) drop-shadow(0 0 30px rgba(255,179,0,.7))}
+}
+@keyframes brightFlow{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+
+h1:hover,h2:hover,h3:hover,h4:hover,.tt:hover,.big:hover,.hero-name:hover,.logo:hover,
+.panel h3:hover,.ti h4:hover,.pj h4:hover,.pj .n:hover,.st:hover b{
+  background-image:repeating-linear-gradient(92deg,#00e5ff 0px,#4d8bff 46px,#b44dff 92px,#ff4dd2 138px,#ffb300 184px,#00e5a0 230px,#00e5ff 276px) !important;
+  background-size:100% 100% !important;
+  -webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:#7df9ff !important;
+  font-weight:800 !important; text-shadow:none !important;
+  animation:hueSpin 7s linear infinite !important;
+  transform:translateY(-2px) !important;
+}
+p:hover,.desc:hover,.ti p:hover,.pj p:hover,.panel p:hover,li:hover,
+.nl a:hover,.navlinks a:hover,.chip:hover,.btn:hover,.ci:hover,.ci span:hover,.ci b:hover,
+footer:hover,footer b:hover,.st:hover span,.pj .tc span:hover{
+  background-image:repeating-linear-gradient(92deg,#ffb8e8 0px,#ffe89b 52px,#96ffd9 104px,#8dfaff 156px,#a9c9ff 208px,#d9b6ff 260px,#ffb8e8 312px) !important;
+  background-size:100% 100% !important;
+  -webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:#7df9ff !important;
+  font-weight:600 !important; text-shadow:none !important;
+  font-size:1.04em !important;
+  animation:brightFlow 4s linear infinite !important;
+  filter:none !important;
+  transform:translateY(-2px) !important;
+}
+.role:hover::after,.hero-role:hover::after{-webkit-text-fill-color:#fde047 !important}
+
+/* ===== PHOTO GLUED TO THE EDGE (single source of truth) ===== */
+#hero .hero-copy,#hero .hero-portrait,#hero .hero-portrait .orb{transition:transform .3s ease}
+@media(min-width:861px){
+  #hero{padding-left:0 !important;padding-right:0 !important}
+  #hero .hero-split{
+    max-width:100vw !important;width:100vw !important;padding:0 !important;
+    gap:clamp(14px,2.5vw,40px) !important;
+    justify-content:space-between !important;align-items:center !important;
+  }
+  #hero .hero-copy{flex:1 1 auto !important;padding:0 5vw !important;margin:0 !important;text-align:center !important}
+  #hero .hero-portrait{
+    flex:0 0 auto !important;padding:0 !important;
+    display:flex !important;align-items:center !important;
+    /* push to the right edge even when the copy is absolutely positioned */
+    margin:0 0 0 auto !important;
+  }
+  #hero.photo-left .hero-portrait{margin:0 auto 0 0 !important}
+  #hero .hero-portrait .orb{width:clamp(300px,35vw,480px) !important;margin:0 !important}
+  /* photo on the RIGHT (default) -> bleed past the right edge */
+  #hero .hero-portrait .orb{margin-right:-6vw !important}
+  /* photo on the LEFT (row-reverse layouts) -> bleed past the left edge */
+  #hero.photo-left .hero-portrait .orb{margin-right:0 !important;margin-left:-6vw !important}
+}
+@media(max-width:860px){
+  #hero .hero-split{padding:0 5vw !important;gap:22px !important}
+  #hero .hero-copy{padding:0 !important}
+  #hero .hero-portrait{width:100% !important;justify-content:center !important}
+  #hero .hero-portrait .orb{margin:0 !important;width:min(70vw,300px) !important}
+}
+</style>
+</head>
+<body>
+<div class="veil"></div><div class="lines"></div>
+
+<nav>
+  <div class="logo">RAHUL<i>.</i>SHARMA</div>
+  <ul class="nl">
+    <li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li>
+    <li><a href="#exp">Experience</a></li><li><a href="#proj">Projects</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+<section id="hero" class="photo-left">
+  <div class="badge">Available for opportunities</div>
+  <div class="hero-split">
+    <div class="hero-copy">
+      <h1 class="big">RAHUL SHARMA</h1>
+      <div class="role" id="role">Web Developer</div>
+      <p class="desc">Web developer architecting fast, clean, user-centric websites. Building with HTML, CSS, JavaScript, React &amp; Node.js — turning ideas into immersive digital experiences.</p>
+      <div class="btns"><a href="#proj" class="btn s">View Projects</a><a href="#contact" class="btn">Get In Touch</a></div>
+    </div>
+    <div class="hero-portrait">
+      <div class="orb" id="orb3d">
+        <div class="orbit"><span class="node"></span></div>
+        <div class="orbit2"></div>
+        <div class="disc"></div>
+        <img class="person" src="assets/portrait_cut.png" alt="Rahul Sharma">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="tt rv">About Me</h2><div class="tl rv"></div>
+  <div class="panel rv"><h3>Profile</h3><p>I'm a web developer and MCA graduate based in Powayan, Uttar Pradesh, India. I specialise in front-end development — crafting responsive, high-performance interfaces with React, JavaScript and modern CSS. I've spearheaded projects end-to-end: from real-time API integration to performance tuning that lifted load speed to 95%. Alongside development, I bring hands-on experience in business development and customer support, which sharpened how I translate user needs into working products.</p></div>
+  <div class="stats rv">
+    <div class="st"><b>95%</b><span>Load Speed</span></div><div class="st"><b>50%</b><span>Engagement ↑</span></div>
+    <div class="st"><b>25%</b><span>Sales Growth</span></div><div class="st"><b>30%</b><span>Client Acquisition</span></div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="tt rv">Skills</h2><div class="tl rv"></div>
+  <div class="chips rv">
+    <div class="chip">HTML</div><div class="chip">CSS</div><div class="chip">JavaScript</div><div class="chip">React</div>
+    <div class="chip">Node.js</div><div class="chip">Front-End Development</div><div class="chip">Web Design</div>
+    <div class="chip">Web Development</div><div class="chip">Python</div><div class="chip">Java</div>
+    <div class="chip">Canva</div><div class="chip">Photo Editing</div><div class="chip">Customer Support</div><div class="chip">Responsive Design</div>
+  </div>
+</section>
+
+<section id="exp">
+  <h2 class="tt rv">Experience</h2><div class="tl rv"></div>
+  <div class="tline rv">
+    <div class="ti"><h4>Business Development Associate</h4><div class="m">Tatva Technologies · Noida Sector 62 · Oct 2025 – Present</div><p>Championed the role of BDA at Tatva Technology, accelerating sales of Aakash Institute courses by 25% through strategic client targeting. Amplified revenue streams by optimising sales techniques, achieving a 30% surge in client acquisition.</p></div>
+    <div class="ti"><h4>Telecaller</h4><div class="m">Parvus Analytics · Noida Electronic City · Nov 2024 – Mar 2025</div><p>Conducted comprehensive customer surveys, enhancing data accuracy by 20% through insightful brand-usage analysis. Engineered telemarketing strategies, boosting customer engagement and feedback-collection efficiency by 25%.</p></div>
+  </div>
+</section>
+
+<section id="edu">
+  <h2 class="tt rv">Education</h2><div class="tl rv"></div>
+  <div class="tline rv">
+    <div class="ti"><h4>Master of Computer Applications (M.C.A)</h4><div class="m">Amity University Online · 2024 – 2026 (Completed)</div><p>Completed MCA — advanced study in software engineering, web technologies and modern application architecture.</p></div>
+    <div class="ti"><h4>Bachelor of Computer Applications (BCA)</h4><div class="m">Dev Bhoomi Uttarakhand University, Dehradun · 2021 – 2024</div><p>Core computer science foundation — programming, databases, networking and software development.</p></div>
+    <div class="ti"><h4>Senior Secondary (12th)</h4><div class="m">Prem Chandra Smarak Inter College, Powayan · 2019 – 2020</div><p>Science stream with focus on mathematics and computer fundamentals.</p></div>
+  </div>
+</section>
+
+<section id="proj">
+  <h2 class="tt rv">Projects</h2><div class="tl rv"></div>
+  <div class="pg">
+    <div class="pj rv tilt"><span class="n">01 / WEB</span><h4>Weather Application</h4><p>Spearheaded development of a responsive weather application using React and Node.js, boosting user engagement by 50%. Orchestrated real-time data integration with APIs, increasing update frequency by 30%, and optimised performance to a 95% load speed.</p><div class="tc"><span>React</span><span>Node.js</span><span>REST API</span></div></div>
+    <div class="pj rv tilt"><span class="n">02 / ML</span><h4>Credit Card Fraud Detection</h4><p>Engineered a machine learning model that improved detection of fraudulent credit-card transactions by 25%, leveraging historical data for enhanced accuracy. Analysed transaction patterns, enabling institutions to pre-empt 30% more suspicious activity.</p><div class="tc"><span>Python</span><span>ML</span><span>Data Analysis</span></div></div>
+    <div class="pj rv tilt"><span class="n">03 / HEALTHCARE</span><h4>Patient Monitoring &amp; Emergency Alert System</h4><p>An advanced healthcare technology that continuously tracks a patient's vital signs and automatically triggers immediate alerts to healthcare professionals or family members in a medical emergency. Built for ICUs, CCUs and remote home care.</p><div class="tc"><span>IoT</span><span>Realtime</span><span>Alerting</span></div></div>
+  </div>
+</section>
+
+<section id="ach">
+  <h2 class="tt rv">Achievements</h2><div class="tl rv"></div>
+  <div class="panel rv"><h3>Cricket — District Level</h3><p>Won <b style="color:var(--c1)">Man of the Match</b> in a district-level cricket tournament — a testament to teamwork, focus under pressure and consistent performance.</p></div>
+  <div class="panel rv" style="margin-top:20px"><h3>Certifications</h3><p>▹ Certificate in Principles of Retailing<br>▹ Certificate Course in Leadership and Motivation in Organization — Jan 2025</p></div>
+</section>
+
+<section id="contact">
+  <h2 class="tt rv">Get In Touch</h2><div class="tl rv"></div>
+  <div class="cw rv">
+    <a class="ci" href="mailto:sharmap8853@gmail.com"><div class="i">✉</div><div><b>Email</b><span>sharmap8853@gmail.com</span></div></a>
+    <a class="ci" href="tel:+918853070268"><div class="i">☎</div><div><b>Phone</b><span>+91 88530 70268</span></div></a>
+    <a class="ci" href="https://www.linkedin.com/in/rahul-sharma-386796245" target="_blank" rel="noopener"><div class="i">in</div><div><b>LinkedIn</b><span>rahul-sharma-386796245</span></div></a>
+    <a class="ci" href="https://github.com/hardik7889/gvfshdbhhdsb" target="_blank" rel="noopener"><div class="i">⌘</div><div><b>GitHub</b><span>hardik7889</span></div></a>
+    <a class="ci" href="#hero"><div class="i">◉</div><div><b>Location</b><span>Powayan, Uttar Pradesh, India</span></div></a>
+    <a class="ci" href="#hero"><div class="i">↑</div><div><b>Back to top</b><span>Return to the beginning</span></div></a>
+  </div>
+</section>
+</main>
+<footer>© 2026 <b>Rahul Sharma</b> — Holo Prism · Pure CSS 3D</footer>
+
+<script>
+/* ---------- 3D TILT on the portrait orb ---------- */
+(function(){
+  const orb=document.getElementById('orb3d');
+  if(!orb) return;
+  orb.addEventListener('mousemove',e=>{
+    const r=orb.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width-.5;
+    const py=(e.clientY-r.top)/r.height-.5;
+    orb.style.transform='rotateY('+(px*20)+'deg) rotateX('+(-py*20)+'deg) translateY(-6px) scale(1.03)';
+  });
+  orb.addEventListener('mouseleave',function(){orb.style.transform='';});
+})();
+
+/* ---------- typewriter ---------- */
+(function(){const e=document.getElementById('role'),w=['Web Developer','Front-End Developer','React Developer','UI Engineer','MCA Graduate'];let i=0,c=0,d=false;
+(function t(){const s=w[i];e.textContent=d?s.slice(0,c--):s.slice(0,c++);let wait=d?45:95;
+if(!d&&c>s.length){d=true;wait=1500}else if(d&&c<0){d=false;i=(i+1)%w.length;c=0;wait=350}setTimeout(t,wait)})()})();
+
+/* ---------- reveal + letters + scramble ---------- */
+(function(){
+  function isGrad(el){const cs=getComputedStyle(el);const clip=cs.webkitBackgroundClip||cs.backgroundClip||'';return clip.indexOf('text')!==-1;}
+  function splitInto(el){
+    if(el.dataset.split) return; el.dataset.split='1';
+    if(isGrad(el)){el.classList.add('fadeup');return;}
+    const txt=el.textContent.trim(); el.textContent='';
+    const frag=document.createDocumentFragment();
+    [].forEach.call(txt,function(ch,i){var s=document.createElement('span');
+      s.textContent=ch===' '?'\u00A0':ch; s.style.transitionDelay=(i*22)+'ms'; frag.appendChild(s);});
+    el.appendChild(frag); el.classList.add('letters');
+  }
+  var GLYPHS='!<>-_\\/[]{}—=+*^?#@$%&ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  function scramble(el){
+    if(el.dataset.scr) return; el.dataset.scr='1';
+    var orig=el.textContent, timer=null;
+    el.addEventListener('mouseenter',function(){var f=0,total=orig.length*3+10;clearInterval(timer);
+      timer=setInterval(function(){el.textContent=[].map.call(orig,function(c,i){if(c===' ')return ' ';if(f>i*3)return c;
+        return GLYPHS[Math.floor(Math.random()*GLYPHS.length)]}).join('');f++;
+        if(f>total){clearInterval(timer);el.textContent=orig}},32)});
+    el.addEventListener('mouseleave',function(){clearInterval(timer);el.textContent=orig});
+  }
+  document.querySelectorAll('.big,.hero-name').forEach(function(el){el.classList.add('glitchTxt');if(!el.dataset.t)el.dataset.t=el.textContent.trim();});
+  document.querySelectorAll('.tt').forEach(function(el){
+    if(!el.querySelector('.uline')){var u=document.createElement('span');u.className='uline';el.appendChild(u);}
+    splitInto(el);
+  });
+  document.querySelectorAll('.tt,.big').forEach(function(el){el.classList.add('gradrotate')});
+  document.querySelectorAll('.tt').forEach(function(el){el.classList.add('flip')});
+  document.querySelectorAll('.nl a,.chip,.btn').forEach(scramble);
+  document.querySelectorAll('.role').forEach(function(el){el.classList.add('neon','gold')});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+    e.target.classList.add('in'); e.target.querySelectorAll('.letters,.fadeup').forEach(function(l){l.classList.add('in')});
+    io.unobserve(e.target);}})},{threshold:.14,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.tt,.rv,.hero-name,.big').forEach(function(el){io.observe(el)});
+})();
+
+/* ---------- project tilt ---------- */
+document.querySelectorAll('.tilt').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();
+  var px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+  c.style.transform='perspective(900px) rotateY('+(px*12)+'deg) rotateX('+(-py*12)+'deg) translateY(-6px) scale(1.02)'});
+  c.addEventListener('mouseleave',function(){c.style.transform=''})});
+
+/* ---------- marquee ticker ---------- */
+(function(){
+  if(document.querySelector('.ticker')) return;
+  var items=['AVAILABLE FOR WORK','HTML','CSS','JAVASCRIPT','REACT','NODE.JS','PYTHON','JAVA',
+    'FRONT-END DEVELOPMENT','WEB DESIGN','RESPONSIVE DESIGN','MCA COMPLETED 2026'];
+  var t=document.createElement('div'); t.className='ticker';
+  var track=document.createElement('i');
+  var html=items.map(function(x){return '<span>◆ <b>'+x+'</b></span>'}).join('');
+  track.innerHTML=html+html; t.appendChild(track); document.body.appendChild(t);
+})();
+
+/* ---------- nav ---------- */
+document.querySelectorAll('.nl a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();
+  var t=document.querySelector(a.getAttribute('href')); if(t)t.scrollIntoView({behavior:'smooth'})})});
+</script>
+</body>
+</html>
